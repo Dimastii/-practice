@@ -1,5 +1,9 @@
 <?php
 
+use App\Author;
+use App\Category;
+use App\Http\Resources\AuthorResource;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/authors', function()
+{
+    return AuthorResource::collection(Author::all());
+});
+
+Route::get('/categories', function()
+{
+    return CategoryResource::collection(Category::all());
 });

@@ -1,5 +1,6 @@
 <?php
-
+use App\User;
+use App\Plant;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'IndexController@index');
+
+Route::get('/test', function()
+{
+    return response()->json(Plant::Get());
 });
